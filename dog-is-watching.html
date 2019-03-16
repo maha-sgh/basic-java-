@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>The Dog is watching</title>
+    <style>
+        .isbold {
+            font-weight: bold;
+        }
+        .isitalic {
+            font-style: italic;
+        }
+        .isunderlined {
+            text-decoration: underline;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 25px 45px;
+            text-align: center;
+            background: #E6E6E6;
+            width: 50%;
+            border-radius: 6px;
+        }
+        .content p {
+            font-size: 26px;
+            padding: 30px;
+            font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+        }
+        button {
+            display: inline-block;
+            border: none;
+            border-radius: 6px;
+            outline: 0;
+            padding: 10px 20px;
+            margin: 0;
+            text-decoration: none;
+            background: #0069ed;
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            transition: background 250ms ease-in-out, 
+                        transform 150ms ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            float: left;
+            margin-right: 5px;
+        }
+
+        button:hover,
+        button:focus {
+            background: #0053ba;
+        }
+
+        button:focus {
+            outline: 0;
+            box-shadow: 0 2px 2px #000;
+        }
+        .font-list, .size-list{
+            font-size: 13px;
+            padding: 10px 8px 10px 14px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .font-list .font-select, .size-list .size-select{
+            width: 120%;
+            background:url('arrow-down.png') no-repeat;
+            background-position:85% center;
+        }
+
+        .font-list .font-select select, .size-list .size-select select {
+            background: transparent;
+            line-height: 1;
+            border: 0;
+            padding: 0;
+            border-radius: 0;
+            width: 120%;
+            position: relative;
+            z-index: 10;
+            font-size: 13px;
+            outline: 0;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+    </head>
+
+    <body>
+    <div class="container">
+        <div class="toolbar">
+            <button type="button" onclick="boldIt()">Bold</button>
+            <button type="button" onclick="italicIt()">Italic</button>
+            <button type="button" onclick="underlineIt()">Underline</button>
+            <div class="font-list" onchange="changeFontFamily(this.value);">
+                <div class="font-select">
+                   <select name="font-list" id="font-list">
+                      <option value="'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'" selected="selected">Gill Sans</option>
+                       <option value="Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'">Cambria</option>
+                      <option value="Baskerville, 'Palatino Linotype', Palatino, 'Century Schoolbook L', 'Times New Roman', 'serif'">Baskerville</option>
+                      <option value="Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'">Impact</option>
+                    </select>
+                 </div>
+             </div>
+            <div class="size-list" onchange="changeFontSize(this.value);">
+                <div class="size-select">
+                   <select name="font-list" id="size-list">
+                      <option value="26px" selected="selected">26px</option>
+                      <option value="30px">30px</option>
+                      <option value="36px">36px</option>
+                      <option value="42px">42px</option>
+                    </select>
+                 </div>
+             </div>
+            
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">
+            <p id="doggy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas iusto similique provident expedita sunt, explicabo beatae ab fuga dicta earum quos illo facere nostrum omnis veniam accusamus. Quam, eligendi veniam?</p>
+        </div>
+    </div>
+        
+        <script>
+            function boldIt() { 
+                document.getElementById("doggy").classList.toggle("isbold"); 
+            }
+            function italicIt() { 
+                document.getElementById("doggy").classList.toggle("isitalic"); 
+            }
+            function underlineIt() { 
+                document.getElementById("doggy").classList.toggle("isunderlined"); 
+            }
+            function changeFontFamily() {
+                var fontselect = document.getElementById("font-list");
+                var font = fontselect.options[fontselect.selectedIndex].value;
+                document.getElementById("doggy").style.fontFamily = font;
+            }
+            function changeFontSize() {
+                var sizeselect = document.getElementById("size-list");
+                var zesize = sizeselect.options[sizeselect.selectedIndex].value;
+                document.getElementById("doggy").style.fontSize = zesize;
+            }
+        </script>
+        
+</body>
+</html>
